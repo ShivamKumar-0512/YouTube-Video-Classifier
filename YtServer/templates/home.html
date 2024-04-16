@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="content-section">
+    <form method="post" action="">
+        {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Youtube Category Prediction</legend>
+        <!--<legend class="border-bottom sm-4">Enter Youtube video link to see it's Category</legend>-->
+        <div class="form-group">
+        {{ form.url.label(class='form-control-label') }}
+             <br>
+            {% if form.url.errors %}
+            {{ form.url(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.url.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ form.url(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.submit(class='btn btn-outline-primary') }}
+        </div>
+    </fieldset>
+    </form>
+</div>
+{% endblock content %}
